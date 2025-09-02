@@ -228,7 +228,7 @@ tol = 10^-6;
 % kingdom = "BacteriaSand";
 kingdom = "combi";
 
-data_ori = readtable("../../PycharmProjects/project3/data/"+kingdom+"/variables_all.csv", "Delimiter", ",", "ReadVariableNames", true, "ReadRowNames", true);
+data_ori = readtable("data/"+kingdom+"/variables_all.csv", "Delimiter", ",", "ReadVariableNames", true, "ReadRowNames", true);
 data = table2array(data_ori);
 nVars = size(data, 2);
 
