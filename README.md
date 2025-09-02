@@ -211,3 +211,78 @@ for inSamples = 1:length(nnSamples)
     csvwrite(resPath+"diffendpointsGS.csv", diffendpointsGS); csvwrite(resPath+"diffendpointsM3HC.csv", diffendpointsM3HC);
 end
 ```
+
+### 2. Real-world data
+```matlab
+clc; clear;
+addpath("M3HC");
+addpath("utilities");
+
+COR = false;
+maxCondSetM3HC = 10;
+skeleton = "MMPC";
+threshold = 5e-2;
+tol = 10^-6;
+
+% kingdom = "BacteriaClay";
+% kingdom = "BacteriaSand";
+kingdom = "combi";
+
+data_ori = readtable("../../PycharmProjects/project3/data/"+kingdom+"/variables_all.csv", "Delimiter", ",", "ReadVariableNames", true, "ReadRowNames", true);
+data = table2array(data_ori);
+nVars = size(data, 2);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% define forbiddenEdges and predefinedEdges
+if kingdom == "combi"
+    managementVars = [20, 21, 22, 23, 24, 25];
+    forbiddenEdges = {};
+    for i = 1:nVars
+        for j = managementVars
+            if i~= j
+                forbiddenEdges = [forbiddenEdges, [i, j]];
+            end
+        end
+    end
+    functionVars = [16, 17, 18, 19];
+    for i = 1:nVars
+        if ~ismember(i, functionVars)
+            for j = functionVars
+                if i~= j
+                    forbiddenEdges = [forbiddenEdges, [j, i]];
+                end
+            end
+        end
+    end
+    % forbiddenEdges = [forbiddenEdges, {}];
+    predefinedEdges = {[27, 15], [28, 16], [29, 17], [30, 18]}; % for test
+else
+    managementVars = [19, 20, 21, 22, 23, 24];
+    forbiddenEdges = {};
+    for i = 1:nVars
+        for j = managementVars
+            if i~= j
+                forbiddenEdges = [forbiddenEdges, [i, j]];
+            end
+        end
+    end
+    functionVars = [15, 16, 17, 18];
+    for i = 1:nVars
+        if ~ismember(i, functionVars)
+            for j = functionVars
+                if i~= j
+                    forbiddenEdges = [forbiddenEdges, [j, i]];
+                end
+            end
+        end
+    end
+    % forbiddenEdges = [forbiddenEdges, {}];
+    predefinedEdges = {[27, 15], [28, 16], [29, 17], [30, 18]}; % for test
+end
+
+
+fprintf("running Dragon_M3HC...\n")
+[m3hcMag, m3hc_bs, m3hcIters, m3hc, mmpc_final] = DG_M3HC(data, discreteVars, {}, forbiddenEdges, maxCondSetM3HC, threshold, tol, true, COR, skeleton);
+m3hcMag = ag2mag(m3hcMag);
+save("res/real/"+kingdom+"/m3hcMag.mat", "m3hcMag");
+csvwrite("res/real/"+kingdom+"/m3hcMag.csv"', m3hcMag);
+```
