@@ -155,12 +155,12 @@ for inVars = 1:length(nnVars)
     save(resPath+"diffedgesFCI.mat", "diffedgesFCI"); save(resPath+"diffedgesCFCI.mat", "diffedgesCFCI");
     save(resPath+"diffendpointsFCI.mat", "diffendpointsFCI"); save(resPath+"diffendpointsCFCI.mat", "diffendpointsCFCI");
     
-    csvwrite(resPath+"timeFCI.csv"', timeFCI); csvwrite(resPath+"timeCFCI.csv"', timeCFCI);
-    csvwrite(resPath+"precisionsFCI.csv"', precisionsFCI); csvwrite(resPath+"precisionsCFCI.csv"', precisionsCFCI);
-    csvwrite(resPath+"recallsFCI.csv"', recallsFCI); csvwrite(resPath+"recallsCFCI.csv"', recallsCFCI);
-    csvwrite(resPath+"shdsFCI.csv"', shdsFCI); csvwrite(resPath+"shdsCFCI.csv"', shdsCFCI);
-    csvwrite(resPath+"diffedgesFCI.csv"', diffedgesFCI); csvwrite(resPath+"diffedgesCFCI.csv"', diffedgesCFCI);
-    csvwrite(resPath+"diffendpointsFCI.csv"', diffendpointsFCI); csvwrite(resPath+"diffendpointsCFCI.csv"', diffendpointsCFCI);
+    csvwrite(resPath+"timeFCI.csv", timeFCI); csvwrite(resPath+"timeCFCI.csv", timeCFCI);
+    csvwrite(resPath+"precisionsFCI.csv", precisionsFCI); csvwrite(resPath+"precisionsCFCI.csv", precisionsCFCI);
+    csvwrite(resPath+"recallsFCI.csv", recallsFCI); csvwrite(resPath+"recallsCFCI.csv", recallsCFCI);
+    csvwrite(resPath+"shdsFCI.csv", shdsFCI); csvwrite(resPath+"shdsCFCI.csv", shdsCFCI);
+    csvwrite(resPath+"diffedgesFCI.csv", diffedgesFCI); csvwrite(resPath+"diffedgesCFCI.csv", diffedgesCFCI);
+    csvwrite(resPath+"diffendpointsFCI.csv", diffendpointsFCI); csvwrite(resPath+"diffendpointsCFCI.csv", diffendpointsCFCI);
     
     save(resPath+"timeGS.mat", "timeGS"); save(resPath+"timeM3HC.mat", "timeM3HC");
     save(resPath+"precisionsGS.mat", "precisionsGS"); save(resPath+"precisionsM3HC.mat", "precisionsM3HC");
@@ -169,12 +169,12 @@ for inVars = 1:length(nnVars)
     save(resPath+"diffedgesGS.mat", "diffedgesGS"); save(resPath+"diffedgesM3HC.mat", "diffedgesM3HC");
     save(resPath+"diffendpointsGS.mat", "diffendpointsGS"); save(resPath+"diffendpointsM3HC.mat", "diffendpointsM3HC");
     
-    csvwrite(resPath+"timeGS.csv"', timeGS); csvwrite(resPath+"timeM3HC.csv"', timeM3HC);
-    csvwrite(resPath+"precisionsGS.csv"', precisionsGS); csvwrite(resPath+"precisionsM3HC.csv"', precisionsM3HC);
-    csvwrite(resPath+"recallsGS.csv"', recallsGS); csvwrite(resPath+"recallsM3HC.csv"', recallsM3HC);
-    csvwrite(resPath+"shdsGS.csv"', shdsGS); csvwrite(resPath+"shdsM3HC.csv"', shdsM3HC);
-    csvwrite(resPath+"diffedgesGS.csv"', diffedgesGS); csvwrite(resPath+"diffedgesM3HC.csv"', diffedgesM3HC);
-    csvwrite(resPath+"diffendpointsGS.csv"', diffendpointsGS); csvwrite(resPath+"diffendpointsM3HC.csv"', diffendpointsM3HC);
+    csvwrite(resPath+"timeGS.csv", timeGS); csvwrite(resPath+"timeM3HC.csv", timeM3HC);
+    csvwrite(resPath+"precisionsGS.csv", precisionsGS); csvwrite(resPath+"precisionsM3HC.csv", precisionsM3HC);
+    csvwrite(resPath+"recallsGS.csv", recallsGS); csvwrite(resPath+"recallsM3HC.csv", recallsM3HC);
+    csvwrite(resPath+"shdsGS.csv", shdsGS); csvwrite(resPath+"shdsM3HC.csv", shdsM3HC);
+    csvwrite(resPath+"diffedgesGS.csv", diffedgesGS); csvwrite(resPath+"diffedgesM3HC.csv", diffedgesM3HC);
+    csvwrite(resPath+"diffendpointsGS.csv", diffendpointsGS); csvwrite(resPath+"diffendpointsM3HC.csv", diffendpointsM3HC);
 end
 ```
 
