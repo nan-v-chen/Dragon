@@ -262,6 +262,6 @@ for id = 0:numBoot
     [m3hcMag, m3hc_bs, m3hcIters, m3hc, mmpc_final] = DG_M3HC(sample, discreteVars, {}, forbiddenEdges, maxCondSetM3HC, threshold, tol, true, COR, skeleton);
     m3hcMag = ag2mag(m3hcMag);
     save("res/real/"+kingdom+"/m3hcMag"+string(id)+".mat", "m3hcMag");
-    csvwrite("res/real/"+kingdom+"/m3hcMag"+string(id)+".csv"', m3hcMag);
+    csvwrite("res/real/"+kingdom+"/m3hcMag"+string(id)+".csv", m3hcMag);
 end
 ```
