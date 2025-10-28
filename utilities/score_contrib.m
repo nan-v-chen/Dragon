@@ -78,7 +78,7 @@ else
     curCompMag = compMagExp(districtExp, districtExp);	% real sub_mag
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% deal with some exceptions
-    if any(eig(curCovMat)<= 1e-16)
+    if rcond(curCovMat)<= 1e-14
         fprintf('Covariance matrix is not positive definite\n')
 %         fprintf('%d\n', find(district == 1));
         sc = 1e10;
@@ -87,7 +87,7 @@ else
     try
         [~, ~, curHatCovMat, ~] = RICF_fit(curCompMag, curCovMat, tol);
     catch ME
-        fprintf("RICF exception\n");
+        fprintf('Error: %s\n', ME.message);
 %         fprintf('%d\n', find(district == 1));
         sc = 1e10;
         return;

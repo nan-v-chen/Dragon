@@ -1,10 +1,10 @@
 function [beta, omega, hatCovMat, ricf] = RICF_fit(smm, covMat, tol)
 
-if any(eig(covMat)<= 0)
-    errprintf('Covariance matrix is not positive definite\n')
+if (rcond(covMat)<= 1e-14)
+    error('Covariance matrix is not positive definite')
 end
 if any(smm==4)
-    errprintg('Graph includes bows\n');
+    error('Graph includes bows');
 end
 
 
@@ -42,10 +42,10 @@ while true
            if ~isempty(iPar)
                if iter==1
                    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% deal with some exceptions
-                   if (any(eig(covMat(iPar, iPar)) <= 1e-16))
-                       errprintf('covMat(iPar, iPar) is not positive definite\n')
+%                    if (any(eig(covMat(iPar, iPar)) <= 1e-16))
+                   if (rcond(covMat(iPar, iPar)) <= 1e-14)
+                       error('covMat(iPar, iPar) is not positive definite')
                    end
-
                    beta(iVar, iPar) = -covMat(iVar, iPar)*inv(covMat(iPar, iPar));
                    omega(iVar, iVar) = covMat(iVar, iVar) + beta(iVar, iPar)*covMat(iPar, iVar);
                end
@@ -73,8 +73,8 @@ while true
            YX = [covMat(iVar, iPar) covMat(iVar, :)*Z']';
            
            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% deal with some exceptions
-           if (any(eig(XX) <= 1e-16))
-               errprintf('XX is not positive definite\n')
+           if (rcond(XX) <= 1e-14)
+               error('XX is not positive definite')
            end
            
            temp =YX'/XX;
@@ -93,8 +93,8 @@ while true
            YX = [covMat(iVar, :)*Z']';
            
           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% deal with some exceptions           
-          if (any(eig(XX) <= 1e-16))
-              errprintf('XX is not positive definite\n')
+          if (rcond(XX) <= 1e-14)
+              error('XX is not positive definite')
           end
            
            omega(iVar, iSp) = YX'/XX;
@@ -115,6 +115,9 @@ while true
     end
    if (sum(sum(abs(ricf(iter).omega-omega))) + sum(sum(abs(ricf(iter).beta-beta))) < tol)
        break;
+   end
+   if (iter > 1000)
+       error('RICF can not converge')
    end
 end
 hatCovMat = inv(beta)*omega*inv(beta');
