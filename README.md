@@ -106,13 +106,6 @@ for inSamples = 1:length(nnSamples)
             [~, newDiscreteVars] = ismember(discreteVars, newIndMap);
             
             %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% discrete data
-%             for i = 1:length(newDiscreteVars)
-%                 varIdx = newDiscreteVars(i);
-%                 numBins = numCategories(i);
-%                 edges = quantile(data(:, varIdx), linspace(0, 1, numBins+1));
-%                 groups = discretize(data(:, varIdx), edges);
-%                 data(:, varIdx) = groups;
-%             end
             for i = 1:length(newDiscreteVars)
                 varIdx = newDiscreteVars(i);
                 probs = categoryProbs;
