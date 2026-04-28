@@ -1,4 +1,4 @@
-function [mmmhcMag, mmmhc_bs, mmmhcIters, mmmhc, skeleton_final] = DG_M3HC(data, discreteVars, predefined, forbidden, maxCondSet, threshold, tol, verbose, cor, skeleton)
+function [mag, curScore, iter, gs, skeleton_final] = DG_M3HC(data, discreteVars, predefined, forbidden, maxCondSet, threshold, tol, verbose, cor, skeleton)
 % Author: nan.v.chen@gmail.com
 % this function is developed based on the original M3HC
 % =======================================================================
@@ -6,23 +6,54 @@ function [mmmhcMag, mmmhc_bs, mmmhcIters, mmmhc, skeleton_final] = DG_M3HC(data,
 % =======================================================================
 %   data: the original data with discrete variables
 %   discreteVars: vector<INT>, the index of discrete variables in data
-%   predefined: predefined directed edges {[i, j, dir]}, i < j, dir=2: i->j; dir=3: j->i; please don't add cycles
-%   forbidden: forbidden directed edges {[i, j, dir]}, i < j, dir=2: i->j; dir=3: j->i
+%   predefined: predefined directed edges {[i, j]}, i->j, please don't add cycles
+%   forbidden: forbidden directed edges {[i, j]}, i->j
 %   maxCondSet: INT, maximum conditioning set size for MMPC
 %   threshold: DOUBLE, significance level alpha for MMPC
 %   tol: DOUBLE, tolerance
+%   verbose: BOOL, debug information
 %   cor: BOOL, true for correlation matrix / false for covariance matrix
 %   skeleton: String, method to compute the skeleton before greedy search
 % =======================================================================
 % Outputs
 % =======================================================================
-%   mmmhcMag:
-%   mmmhc_bs:
-%   mmmhcIters:
-%   mmmhc:
-%   skeleton_final:
-%   time:
+%   mag: mag
+%   curScore: overall score
+%   iter: iteration used
+%   gs: records of iterations in greedy search
+%   skeleton_final: skeleton_final obtrained by MMPC
 % =======================================================================
+    if nargin < 10 || isempty(skeleton)
+        skeleton = 'MMPC';
+    end
+    if nargin < 9 || isempty(cor)
+        cor = false;
+    end
+    if nargin < 8 || isempty(verbose)
+        verbose = false;
+    end
+    if nargin < 7 || isempty(tol)
+        tol = 1e-6;
+    end
+    if nargin < 6 || isempty(threshold)
+        threshold = 0.05;
+    end
+    if nargin < 5 || isempty(maxCondSet)
+        maxCondSet = 10;
+    end
+    if nargin < 4 || isempty(forbidden)
+        forbidden = {};
+    end
+    if nargin < 3 || isempty(predefined)
+        predefined = {};
+    end
+    if nargin < 2 || isempty(discreteVars)
+        discreteVars = [];
+    end
+    if nargin < 1 || isempty(data)
+        error('DG_M3HC:MissingInput', ...
+            'The first input argument "data" is required.');
+    end
 
     nSamples = size(data, 1);
     nVars = size(data, 2);
@@ -78,5 +109,5 @@ function [mmmhcMag, mmmhc_bs, mmmhcIters, mmmhc, skeleton_final] = DG_M3HC(data,
 %         end
     end
 
-    [mmmhcMag, mmmhc_bs, mmmhcIters, mmmhc] = mmmhcSearchMag(newCovMat, indMap, discreteVars, predefined, forbidden, nVars, nSamples, tol, verbose, skeleton_final);
+    [mag, curScore, iter, gs] = mmmhcSearchMag(newCovMat, indMap, discreteVars, predefined, forbidden, nVars, nSamples, tol, verbose, skeleton_final);
 end

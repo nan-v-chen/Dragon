@@ -13,12 +13,31 @@ function [mag, curScore, iter, gs] = DG_GSMAG(data, discreteVars, predefined, fo
 % =======================================================================
 % Outputs
 % =======================================================================
-%   mag
+%   mag: mag
 %   curScore: overall score
 %   iter: iteration used
 %   gs: records of iterations in greedy search
 % =======================================================================
-
+    if nargin < 6 || isempty(verbose)
+        verbose = false;
+    end
+    if nargin < 5 || isempty(tol)
+        tol = 1e-6;
+    end
+    if nargin < 4 || isempty(forbidden)
+        forbidden = {};
+    end
+    if nargin < 3 || isempty(predefined)
+        predefined = {};
+    end
+    if nargin < 2 || isempty(discreteVars)
+        discreteVars = [];
+    end
+    if nargin < 1 || isempty(data)
+        error('DG_GSMAG:MissingInput', ...
+            'The first input argument "data" is required.');
+    end
+    
     nSamples = size(data, 1);
     nVars = size(data, 2);
 
