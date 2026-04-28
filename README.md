@@ -2,7 +2,7 @@
 Degenerate Gaussian (DG) score-based causal discovery
 
 ## Installation
-1. Download the latest `Dragon.mltbx` file from the `release/` folder or GitHub Releases.
+1. Download the latest `Dragon.mltbx` file from the `release/` folder.
 2. Double-click `Dragon.mltbx`.
 3. MATLAB will automatically install the toolbox and add the required paths.
 
