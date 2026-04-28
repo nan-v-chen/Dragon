@@ -1,17 +1,35 @@
 <deployment-project plugin="plugin.toolbox" plugin-version="1.0">
-  <configuration file="C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\Dragon_git\Dragon\Dragon.prj" location="C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\Dragon_git\Dragon" name="Dragon" target="target.toolbox" target-name="Package Toolbox">
+  <configuration build-checksum="2605845518" file="C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\Dragon_git\Dragon\Dragon.prj" location="C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\Dragon_git\Dragon" name="Dragon" target="target.toolbox" target-name="Package Toolbox">
     <param.appname>Dragon</param.appname>
     <param.authnamewatermark>Nan Chen and Doina Bucur</param.authnamewatermark>
     <param.email>nchen621@gmail.com</param.email>
-    <param.company />
+    <param.company>University of Twente</param.company>
     <param.summary />
     <param.description />
     <param.screenshot />
     <param.version>1.0</param.version>
     <param.output>${PROJECT_ROOT}\Dragon.mltbx</param.output>
-    <param.products.name />
-    <param.products.id />
-    <param.products.version />
+    <param.products.name>
+      <item>MATLAB</item>
+      <item>Bioinformatics Toolbox</item>
+      <item>Optimization Toolbox</item>
+      <item>Parallel Computing Toolbox</item>
+      <item>Statistics and Machine Learning Toolbox</item>
+    </param.products.name>
+    <param.products.id>
+      <item>1</item>
+      <item>83</item>
+      <item>6</item>
+      <item>80</item>
+      <item>19</item>
+    </param.products.id>
+    <param.products.version>
+      <item>9.4</item>
+      <item>4.10</item>
+      <item>8.1</item>
+      <item>6.12</item>
+      <item>11.3</item>
+    </param.products.version>
     <param.platforms />
     <param.guid>98b563d1-f81b-430a-b5c5-a5c2b08a5823</param.guid>
     <param.exclude.filters>% List files contained in your toolbox folder that you would like to exclude
@@ -56,15 +74,11 @@ README.md</param.exclude.filters>
     <unset>
       <param.authnamewatermark />
       <param.email />
-      <param.company />
       <param.summary />
       <param.description />
       <param.screenshot />
       <param.version />
       <param.output />
-      <param.products.name />
-      <param.products.id />
-      <param.products.version />
       <param.platforms />
       <param.exclude.pcodedmfiles />
       <param.examples />
@@ -94,33 +108,11 @@ README.md</param.exclude.filters>
       <file>${PROJECT_ROOT}\FCI</file>
       <file>${PROJECT_ROOT}\LICENSE</file>
       <file>${PROJECT_ROOT}\M3HC</file>
+      <file>${PROJECT_ROOT}\release</file>
       <file>${PROJECT_ROOT}\utilities</file>
     </fileset.rootfiles>
     <fileset.depfun.included />
-    <fileset.depfun.excluded>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\FCI\fciskeleton.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\FCI\R0.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\FCI\R0_conservative.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\M3HC\FisherTestFast.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\M3HC\hasinducingpathmcg.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\M3HC\mmmhcSearchMag.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\M3HC\MMPC.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\M3HC\MMPC_skeleton.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\componentMag.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\concomp.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\findancestors.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\findAncestorsPag_mex.mexw64</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\hasinducingpathdag.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\isReachablePag_mex.mexw64</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\logdet.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\process_options.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\RICF_fit.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\score_contrib.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\transitiveClosureSparse_mex.mexw64</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\updateConcomp.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\updateConcompRem.m</file>
-      <file>C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\toolbox\Dragon\utilities\warshall2.m</file>
-    </fileset.depfun.excluded>
+    <fileset.depfun.excluded />
     <fileset.package />
     <build-deliverables>
       <file location="C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\Dragon_git\Dragon" name="Dragon.mltbx" optional="false">C:\Users\ChenN\OneDrive - University of Twente\MatlabProjects\Dragon_git\Dragon\Dragon.mltbx</file>
