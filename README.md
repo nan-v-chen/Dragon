@@ -25,12 +25,26 @@ Run Dragon_M3HC.
 #### Returns
 | Return | Type | Description |
 |---------|------|-------------|
-| `mag` | matrix | Estimated maximal ancestral graph. |
+| `mag` | matrix | Estimated ancestral graph. |
 | `curScore` | double | Final overall DG-BIC score. |
 | `iter` | integer | Number of greedy search iterations used. |
 | `gs` | struct | Records of selected iterations during greedy search. |
 | `skeleton_final` | cell array | Final skeleton obtained before greedy search. |
-#### MAG Encoding
+
+---
+
+### `mag = ag2mag(ag)`
+Convert an ancestral graph into a maximal ancestral graph (MAG) over the same variables.
+#### Parameters
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `ag` | matrix | Input ancestral graph represented using the same matrix encoding as MAG. |
+#### Returns
+| Return | Type | Description |
+|---------|------|-------------|
+| `mag` | matrix | Converted maximal ancestral graph (MAG). Additional bidirected edges may be added when inducing paths are detected between non-adjacent variables. |
+
+## MAG Encoding
 The returned MAG is represented as an adjacency matrix:
 | Pattern | Interpretation |
 |----------|---------------|
